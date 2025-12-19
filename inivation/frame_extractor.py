@@ -13,7 +13,6 @@ filename_stem = aedat_path.stem
 output_dir = aedat_path.parent / f"frame_{filename_stem}"
 output_dir.mkdir(parents=True, exist_ok=True)
 
-# === timestamps txt 생성 ===
 ts_txt = output_dir / "timestamps.txt"
 f_ts = open(ts_txt, "w")
 
@@ -30,7 +29,7 @@ while reader.isRunning():
         out_img_path = output_dir / f"{frame.timestamp}.png"
         cv.imwrite(str(out_img_path), frame.image)
 
-        # Save timestamp (단위 그대로 나노초?)
+        # Save timestamp
         f_ts.write(f"{frame.timestamp}\n")
 
         lastTimestamp = frame.timestamp
