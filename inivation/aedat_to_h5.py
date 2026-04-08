@@ -12,7 +12,7 @@ def save_events_h5(timestamps, xs, ys, ps, h5_path):
     with h5py.File(h5_path, "w") as hf:
         grp = hf.create_group("events")
         grp.create_dataset("ts",
-                           data=np.array(timestamps, dtype=np.float64),
+                           data=np.array(timestamps, dtype=np.uint64),
                            compression="gzip", chunks=True)
         grp.create_dataset("xs",
                            data=np.array(xs, dtype=np.uint16),
